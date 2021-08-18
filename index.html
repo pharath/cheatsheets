@@ -1,415 +1,478 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-<title>Computational Astrophysics in Python (WP1.1)</title>
-<!-- 2019-04-29 Mon 15:59 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="The Astrophysics Python Lab Instructors" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  /*]]>*/-->
-</style>
-<link rel="stylesheet" type="text/css" href="htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="readtheorg.css"/>
-<script src="jquery.min.js"></script>
-<script src="bootstrap.min.js"></script>
-<script type="text/javascript" src="jquery.stickytableheaders.js"></script>
-<script type="text/javascript" src="readtheorg.js"></script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>  
-<div id="content">
-<h1 class="title">Computational Astrophysics in Python (WP1.1)</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#sec-1">1. About this lab</a></li>
-<li><a href="#sec-2">2. Introduction to programming and plotting in Python</a>
-<ul>
-<li><a href="#sec-2-1">2.1. First week: Tutorial about finding your way in Linux</a></li>
-<li><a href="#sec-2-2">2.2. Second week: Python tutorial</a></li>
-</ul>
-</li>
-<li><a href="#sec-3">3. Matrix inversion</a></li>
-<li><a href="#sec-4">4. Integration methods</a></li>
-<li><a href="#sec-5">5. Ordinary differential equations</a></li>
-<li><a href="#sec-6">6. N-body simulations</a></li>
-<li><a href="#sec-7">7. Random numbers and Monte Carlo simulations</a></li>
-<li><a href="#sec-8">8. Monte Carlo Markov Chains and Lensing Profile of Galaxy Clusters</a></li>
-</ul>
-</div>
-</div>
-<p>
-Questions/Comments about the Python lab should go to Kerstin Paech (email is paech and then the usual @usm.lmu.de).
-</p>
-
-
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> About this lab</h2>
-<div class="outline-text-2" id="text-1">
-<p>
-This is the webpage for the <b>Computational Astrophysics in Python Lab</b>. For
-informations about the FORTRAN lab and general terms of this numerics lab,
-please refer to the <a href="http://www.usm.uni-muenchen.de/people/puls/lessons/numprakt.html">FORTRAN numerics lab website</a>. 
-The labs will be very similar to the FORTRAN labs, but with a stronger emphasis
-on writing your own programs.
-</p>
-
-<p>
-For general information about how this lab course is organized go to the
-<a href="http://www.usm.uni-muenchen.de/people/stella/praktikum.html">course main page</a>. There you will find information how everything works, including
-evaluation criteria. These criteria are not self-serving and you should 
-very much see them as a guideline on what important skills as a scientist are.
-You will need these and other skills to successfully complete your master thesis
-eventually.
-</p>
-
-
-<p>
-For information about the introduction that takes place in the first two weeks,
-see <a href="#sec-2">here</a>.
-</p>
-
-<p>
-The Python numerics lab exercises are mostly provided as jupyter ipython notebook
-(exceptions are mentioned in the lab descriptions you can find below). Check
-out the respective sections for each lab. 
-</p>
-
-<p>
-How to use ipython notebooks will be discussed in the <a href="#sec-2-2">tutorial</a>. If you'd like to 
-install python and jupyter on your personal computer, a convenient choice is 
-described on the jupyter website <a href="http://jupyter.readthedocs.org/en/latest/install.html%0A">here</a>.
-</p>
-
-<p>
-The following labs are offered in Python:
-</p>
-<ul class="org-ul">
-<li><a href="#sec-3">Matrix inversion</a>
-</li>
-<li><a href="#sec-4">Integration methods</a>
-</li>
-<li><a href="#sec-5">Ordinary differential equations</a>
-</li>
-<li><a href="#sec-7">Random numbers and Monte Carlo simulations</a>
-</li>
-<li><a href="#sec-6">N-body simulations</a>
-</li>
-<li><a href="#sec-8">Monte Carlo Markov Chains and Lensing Profile of Galaxy Clusters</a>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Introduction to programming and plotting in Python</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> First week: Tutorial about finding your way in Linux</h3>
-<div class="outline-text-3" id="text-2-1">
-<p>
- The first week of the introduction is the same as for WP2.1 and WP2.2,
-you can find the relevant files <a href="http://www.usm.uni-muenchen.de/people/puls/lessons/intro_general/">here</a>. For the first complete the
-general exercise that you can find <a href="http://www.usm.uni-muenchen.de/people/puls/lessons/intro_general/exercise_general.pdf">here</a> (same as everyone else).
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Second week: Python tutorial</h3>
-<div class="outline-text-3" id="text-2-2">
-<p>
-In the second week you'll have a basic tutorial about programming and visualizing results.
-For the numerics lab in python, we'll have a separate tutorial to the traditional one
-(which focuses on FORTRAN and IDL), which focuses on Python3 as a programming language
-and will be the main tool for visualization (April 26, 2016). We'll meet in the lobby.
-</p>
-
-<p>
-Please download the <a href="https://dmz-sv-owncloud.physik.uni-muenchen.de/public.php?service=files&t=c2d11f9aa0a5ef4b78424c0a55e494f7&download">ipython notebook</a> that you'll be using in the tutorial. We
-recommend that you look at it before the tutorial. If you don't have access to
-ipython (yet), you can download the <a href="https://dmz-sv-owncloud.physik.uni-muenchen.de/public.php?service=files&t=3e155174844c87a1b0a37c01bcaeff86&download">html version</a> and copy/paste the content from there.
-</p>
-
-<p>
-After the tutrial, work through the exercises in the following <a href="https://owncloud.physik.uni-muenchen.de/index.php/s/qHcER1Ud0qpEmuA">notebook</a>. You have to
-and this in one week after the Python3 tutorial.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Matrix inversion</h2>
-
-  <script>
-function passWord() {
-var testV = 1;
-var pass1 = prompt('Bitte Passwort eingeben',' ');
-while (testV < 3) {
-if (!pass1) 
-history.go(-1);
-if (pass1.toLowerCase() == "letmein") {
-alert('Richtig!');
-window.open("protected.html")
-break;
-} 
-testV+=1;
-var pass1 = 
-prompt('Zugriff  verweigert – Passwort falsch, bitte erneut versuchen!','Passwort');
-}
-if (pass1.toLowerCase()!="Passwort" & testV ==3) 
-history.go(-1);
-return " ";
-} 
-</script>
-<center>
-<form>
-<input type="Button" value="Geschützen Bereich betreten" onclick="passWord()">
-</form>
-</center>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
   
-<div class="outline-text-2" id="text-3">
-<p>
-In this lab, basic methods for solving linear equations are implemented and applied.
-</p>
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>CARLA Simulator</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-<p>
-Please prepare for this lab by reading chapters 1-6 of the <a href="http://www.usm.uni-muenchen.de/people/keith/Numprakt/la_manual.pdf">lab manual</a>.
-For exercises 1-6 and advanced task 1, please refer to the <a href="https://dmz-sv-owncloud.physik.uni-muenchen.de/public.php?service=files&t=bad38d1c4b7dc44241357a3576902f2b&download">ipython notebook</a>,
-all other exercises are found the in the FORTRAN lab manual. You can find the
-codes and data exercise 7 <a href="https://dmz-sv-owncloud.physik.uni-muenchen.de/public.php?service=files&t=ade106be04a2409f6c77b0edc90fde9c&download">here</a>.
-</p>
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="extra.css" rel="stylesheet" />
+  <link href="https://assets.readthedocs.org/static/css/badge_only.css" rel="stylesheet" />
+  <link href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Home";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> CARLA Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
 </div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#building-carla">Building CARLA</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#first-steps">First steps</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#advanced-concepts">Advanced concepts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#traffic-simulation">Traffic Simulation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#references">References</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#plugins">Plugins</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ros-bridge">ROS bridge</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#custom-maps">Custom Maps</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#large-maps">Large Maps</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tutorials-general">Tutorials — General</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tutorials-assets">Tutorials — Assets</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tutorials-developers">Tutorials — Developers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#carla-ecosystem">CARLA Ecosystem</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contributing">Contributing</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Getting started</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="start_introduction/">Introduction</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="start_quickstart/">Quick start package installation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Building CARLA</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="build_linux/">Linux build</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="build_windows/">Windows build</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="build_update/">Update CARLA</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="build_system/">Build system</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="build_docker/">CARLA in Docker</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="build_faq/">F.A.Q.</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">First steps</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="core_concepts/">Core concepts</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="core_world/">1st- World and client</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="core_actors/">2nd- Actors and blueprints</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="core_map/">3rd- Maps and navigation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="core_sensors/">4th- Sensors and data</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Advanced concepts</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="adv_opendrive/">OpenDRIVE standalone mode</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="adv_ptv/">PTV-Vissim co-simulation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="adv_recorder/">Recorder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="adv_rendering_options/">Rendering options</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="adv_rss/">RSS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="adv_synchrony_timestep/">Synchrony and time-step</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="adv_benchmarking/">Benchmarking Performance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="adv_agents/">CARLA Agents</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Traffic Simulation</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="ts_traffic_simulation_overview/">Traffic Simulation Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="adv_traffic_manager/">Traffic Manager</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="adv_sumo/">SUMO co-simulation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_G_scenic/">Scenic</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">References</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="python_api/">Python API reference</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="bp_library/">Blueprint Library</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="ref_cpp/">C++ reference</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="ref_recorder_binary_file_format/">Recorder binary file format</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="ref_sensors/">Sensors reference</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Plugins</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="plugins_carlaviz/">carlaviz — web visualizer</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">ROS bridge</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="ros_documentation/">ROS bridge documentation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Custom Maps</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_M_custom_map_overview/">Overview of custom maps in CARLA</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_M_generate_map/">Create a map in RoadRunner</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_M_add_map_package/">Import map in CARLA package</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_M_add_map_source/">Import map in CARLA source build</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_M_add_map_alternative/">Alternative ways to import maps</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_M_manual_map_package/">Manually prepare map package</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_M_custom_layers/">Customizing maps: Layered maps</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_M_custom_add_tl/">Customizing maps: Traffic lights and signs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_M_custom_road_painter/">Customizing maps: Road painter</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_M_custom_buildings/">Customizing maps: Procedural Buildings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_M_custom_weather_landscape/">Customizing maps: Weather and landscape</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_M_generate_pedestrian_navigation/">Generate pedestrian navigation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Large Maps</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="large_map_overview/">Large maps overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="large_map_roadrunner/">Create a large map in RoadRunner</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="large_map_import/">Import/Package a large map</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tutorials (general)</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_G_add_friction_triggers/">Add friction triggers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_G_control_vehicle_physics/">Control vehicle physics</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_G_control_walker_skeletons/">Control walker skeletons</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_G_openstreetmap/">Generate maps with OpenStreetMap</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_G_retrieve_data/">Retrieve simulation data</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_G_carsim_integration/">CarSim Integration (Beta)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_G_rllib_integration/">RLlib Integration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_G_chrono/">Chrono Integration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="build_docker_unreal/">Build Unreal and CARLA in Docker</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tutorials (assets)</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_A_add_vehicle/">Add a new vehicle</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_A_add_props/">Add new props</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_A_create_standalone/">Create standalone packages</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_A_material_customization/">Material customization</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tutorials (developers)</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_D_contribute_assets/">How to upgrade content</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_D_create_sensor/">Create a sensor</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_D_create_semantic_tags/">Create semantic tags</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_D_customize_vehicle_suspension/">Customize vehicle suspension</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_D_generate_colliders/">Generate detailed colliders</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tuto_D_make_release/">Make a release</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">CARLA Ecosystem</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="ecosys_ansys/">Ansys Real Time Radar Model</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Contributing</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="cont_contribution_guidelines/">Contribution guidelines</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="cont_code_of_conduct/">Code of conduct</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="cont_coding_standard/">Coding standard</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="cont_doc_standard/">Documentation standard</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">CARLA Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Home</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/carla-simulator/carla/edit/master/Docs/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
 </div>
-
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Integration methods</h2>
-<div class="outline-text-2" id="text-4">
-<p>
-You'll numerically calculate integrals and apply those methods to calculate the radius a 
-pure ionized hydrogen Strömgren sphere.
-</p>
-
-<p>
-Please use the <a href="http://www.usm.uni-muenchen.de/people/adi/Lab/Num-Lab/Int_Man_05.pdf">manual</a> 
-(the password is the same as for the general astro physics lab webpages)
-to prepare for  the lab and refer to the <a href="https://dmz-sv-owncloud.physik.uni-muenchen.de/public.php?service=files&t=58ad4202ed3e3d3bf1deb1a321d44eb0&download">ipython notebook</a> for carying out hthe exercises.
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Ordinary differential equations</h2>
-<div class="outline-text-2" id="text-5">
-<p>
-This lab provides an introduction to some numerical methods to evaluate 
-differential equations, and coupled differential equation. 
-</p>
-
-<p>
-Please prepare for the lab by working through the first three chapters of <a href="http://www.usm.uni-muenchen.de/people/puls/lessons/numpraktnew/ode/ode_manual.pdf">FORTRAN lab</a> 
-manual and answering the inline questions. 
-</p>
-
-<p>
-You find additional instructions in the following ipython notebooks: 
-<a href="https://owncloud.physik.uni-muenchen.de/index.php/s/yZT35dL2nFxAdMO/download">notebook1</a> and <a href="https://owncloud.physik.uni-muenchen.de/index.php/s/ahhc0mpsvp36sRH/download">notebook1a</a> for the first afternoon and <a href="https://owncloud.physik.uni-muenchen.de/index.php/s/TfRywsxOQEY78TQ/download">notebook2</a> for the second
-afternoon.
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> N-body simulations</h2>
-<div class="outline-text-2" id="text-6">
-<p>
-This version of the lab is under development. Please contact 
-<a href="https://www.usm.uni-muenchen.de/people/oliverf/">Oliver Friedrich</a> for the relevant materials and instructions.
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7"><span class="section-number-2">7</span> Random numbers and Monte Carlo simulations</h2>
-<div class="outline-text-2" id="text-7">
-<p>
-In this lab you will learn how to create simple pseudo random numbers and 
-use random numbers to calculate an integral as well as simulate pure radiative
-transfer in stellar atmospheres.
-</p>
-
-<p>
-Please prepare for the lab by working through  chapter 1 of <a href="http://www.usm.uni-muenchen.de/people/puls/lessons/numpraktnew/montecarlo/mc_manual.pdf">FORTRAN lab</a> manual. You
-can find the actual lab exercises in the ipython notebooks for the following three tasks:
-</p>
-<ul class="org-ul">
-<li><a href="https://dmz-sv-owncloud.physik.uni-muenchen.de/public.php?service=files&t=d2494cf8faba12f1ebb63366d78ac54d">Notebook 1</a> In a first step you'll program a simple random number generator
-</li>
-<li><a href="https://dmz-sv-owncloud.physik.uni-muenchen.de/public.php?service=files&t=ab2706efd7506269f121c9167d0f8c9a">Notebook 2</a> The first application an integral is calculated using Monte Carlo Integration
-</li>
-<li><a href="https://dmz-sv-owncloud.physik.uni-muenchen.de/public.php?service=files&t=7fd04431377af492c87bb3401b88cb31">Notebook 3</a> The second application is the simulation of pure radiative transfer in stellar 
-atmospheres and you'll simulate why the sun is darker at it's edges than at the center.
-</li>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="carla-documentation">CARLA Documentation</h1>
+<p>Welcome to the CARLA documentation.</p>
+<p>This home page contains an index with a brief description of the different sections in the documentation. Feel free to read in whatever order preferred. In any case, here are a few suggestions for newcomers.</p>
+<ul>
+<li><strong>Install CARLA.</strong> Either follow the <a href="start_quickstart/">Quick start installation</a> to get a CARLA release or <a href="build_linux/">make the build</a> for a desired platform.</li>
+<li><strong>Start using CARLA.</strong> The section titled <a href="core_concepts/">First steps</a> is an introduction to the most important concepts.</li>
+<li><strong>Check the API.</strong> there is a handy <a href="python_api/">Python API reference</a> to look up the classes and methods available.</li>
 </ul>
-</div>
+<p>The CARLA forum is available to post any doubts or suggestions that may arise during the reading.</p>
+<div class="build-buttons">
+<a href="https://github.com/carla-simulator/carla/discussions/" target="_blank" class="btn btn-neutral" title="Go to the latest CARLA release">
+CARLA forum</a>
 </div>
 
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8"><span class="section-number-2">8</span> Monte Carlo Markov Chains and Lensing Profile of Galaxy Clusters</h2>
-<div class="outline-text-2" id="text-8">
-<ul class="org-ul">
-<li>You'll learn how to use Monte Carlo Markov Chains (MCMC) to estimate the parameters of a
-model, including confidence regions (i.e. uncertainties).
-</li>
-<li>As an application you'll estimate the mass of a galaxy cluster with weak lensing
-</li>
-</ul>
+<p><br></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Change the docs version to fit the CARLA version you are using</strong>. Use the panel in the bottom-right side of this window to change to previous versions. <strong>The <em>Latest</em> version points to documentation in the <code>dev</code> branch</strong> which may refer to features currently in development and <strong>not available</strong> in any packaged version of CARLA, as well general documentation improvements. <img alt="docs_version_panel" src="img/docs_version_panel.jpg" /></p>
+</div>
+<hr />
+<h2 id="getting-started">Getting started</h2>
+<p><a href="start_introduction/"><strong>Introduction</strong></a> — What to expect from CARLA.<br />
+<a href="start_quickstart/"><strong>Quick start package installation</strong></a> — Get the CARLA releases.  </p>
+<h2 id="building-carla">Building CARLA</h2>
+<p><a href="build_linux/"><strong>Linux build</strong></a> — Make the build on Linux.<br />
+<a href="build_windows/"><strong>Windows build</strong></a> — Make the build on Windows.<br />
+<a href="build_update/"><strong>Update CARLA</strong></a> — Get up to date with the latest content.<br />
+<a href="build_system/"><strong>Build system</strong></a> — Learn about the build and how it is made.<br />
+<a href="build_docker/"><strong>CARLA in Docker</strong></a> — Run CARLA using a container solution.<br />
+<a href="build_faq/"><strong>F.A.Q.</strong></a> — Some of the most frequent installation issues.  </p>
+<h2 id="first-steps">First steps</h2>
+<p><a href="core_concepts/"><strong>Core concepts</strong></a> — Overview of the basic concepts in CARLA.<br />
+<a href="core_world/"><strong>1st. World and client</strong></a> — Manage and access the simulation.<br />
+<a href="core_actors/"><strong>2nd. Actors and blueprints</strong></a> — Learn about actors and how to handle them.<br />
+<a href="core_map/"><strong>3rd. Maps and navigation</strong></a> — Discover the different maps and how do vehicles move around.<br />
+<a href="core_sensors/"><strong>4th. Sensors and data</strong></a> — Retrieve simulation data using sensors.  </p>
+<h2 id="advanced-concepts">Advanced concepts</h2>
+<p><a href="adv_opendrive/"><strong>OpenDRIVE standalone mode</strong></a> — Use any OpenDRIVE file as a CARLA map.<br />
+<a href="adv_ptv/"><strong>PTV-Vissim co-simulation</strong></a> — Run a synchronous simulation between CARLA and PTV-Vissim.<br />
+<a href="adv_recorder/"><strong>Recorder</strong></a> — Register the events in a simulation and play it again.<br />
+<a href="adv_rendering_options/"><strong>Rendering options</strong></a> — From quality settings to no-render or off-screen modes.<br />
+<a href="adv_rss/"><strong>RSS</strong></a> — An implementation of RSS in the CARLA client library.<br />
+<a href="adv_synchrony_timestep/"><strong>Synchrony and time-step</strong></a> — Client-server communication and simulation time.<br />
+<a href="adv_benchmarking/"><strong>Benchmarking Performance</strong></a> — Perform benchmarking using our prepared script.<br />
+<a href="adv_agents/"><strong>CARLA Agents</strong></a> — Agents scripts allow single vehicles to roam the map or drive to a set destination.  </p>
+<h2 id="traffic-simulation">Traffic Simulation</h2>
+<p><a href="ts_traffic_simulation_overview/"><strong> Traffic Simulation Overview</strong></a> — An overview of the different options available to populate your scenes with traffic<br />
+<a href="adv_traffic_manager/"><strong>Traffic Manager</strong></a> — Simulate urban traffic by setting vehicles to autopilot mode.<br />
+<a href="adv_sumo/"><strong>SUMO co-simulation</strong></a> — Run a synchronous simulation between CARLA and SUMO.<br />
+<a href="tuto_G_scenic/"><strong>Scenic</strong></a> — Follow an example of defining different scenarios using the Scenic library.  </p>
+<h2 id="references">References</h2>
+<p><a href="python_api/"><strong>Python API reference</strong></a> — Classes and methods in the Python API.<br />
+<a href="bp_library/"><strong>Blueprint library</strong></a> — Blueprints provided to spawn actors.<br />
+<a href="ref_cpp/"><strong>C++ reference</strong></a> — Classes and methods in CARLA C++.<br />
+<a href="ref_recorder_binary_file_format/"><strong>Recorder binary file format</strong></a> — Detailed explanation of the recorder file format.<br />
+<a href="ref_sensors/"><strong>Sensors reference</strong></a> — Everything about sensors and the data they retrieve.  </p>
+<h2 id="plugins">Plugins</h2>
+<p><a href="plugins_carlaviz/"><strong>carlaviz — web visualizer</strong></a> — Plugin that listens the simulation and shows the scene and some simulation data in a web browser.  </p>
+<h2 id="ros-bridge">ROS bridge</h2>
+<p><a href="ros_documentation/"><strong>ROS bridge documentation</strong></a> — Brief overview of the ROS bridge and a link to the full documentation  </p>
+<h2 id="custom-maps">Custom Maps</h2>
+<p><a href="tuto_M_custom_map_overview/"><strong>Overview of custom maps in CARLA</strong></a> — An overview of the process and options involved in adding a custom, standard sized map<br />
+<a href="tuto_M_generate_map/"><strong>Create a map in RoadRunner</strong></a> — How to generate a customs, standard sized map in RoadRunner<br />
+<a href="tuto_M_add_map_package/"><strong> Import map in CARLA package</strong></a> How to import a map in a CARLA package<br />
+<a href="tuto_M_add_map_source/"><strong>Import map in CARLA source build</strong></a> — How to import a map in CARLA built from source<br />
+<a href="tuto_M_add_map_alternative/"><strong>Alternative ways to import maps</strong></a> — Alternative methods to import maps<br />
+<a href="tuto_M_manual_map_package/"><strong> Manually prepare map package</strong></a> — How to prepare a map for manual import<br />
+<a href="tuto_M_custom_layers/"><strong>Customizing maps: Layered maps</strong></a> — How to create sub-layers in your custom map<br />
+<a href="tuto_M_custom_add_tl/"><strong> Customizing maps: Traffic lights and signs</strong></a> — How to add traffic lights and signs to your custom map<br />
+<a href="tuto_M_custom_road_painter/"><strong> Customizing maps: Road painter</strong></a> — How to use the road painter tool to change the apearance of the road<br />
+<a href="tuto_M_custom_buildings/"><strong>Customizing Maps: Procedural Buildings</strong></a> — Populate your custom map with buildings<br />
+<a href="tuto_M_custom_weather_landscape/"><strong> Customizing maps: Weather and landscape</strong></a> — Create the weather profile for your custom map and populate the landscape<br />
+<a href="tuto_M_generate_pedestrian_navigation/"><strong>Generate pedestrian navigation</strong></a> — Obtain the information needed for walkers to move around.  </p>
+<h2 id="large-maps">Large Maps</h2>
+<p><a href="large_map_overview/"><strong>Large maps overview</strong></a> — An explanation of how large maps work in CARLA<br />
+<a href="large_map_roadrunner/"><strong>Create a Large Map in RoadRunner</strong></a> — How to create a large map in RoadRunner<br />
+<a href="large_map_import/"><strong>Import/Package a Large Map</strong></a> — How to import a large map  </p>
+<h2 id="tutorials-general">Tutorials — General</h2>
+<p><a href="tuto_G_add_friction_triggers/"><strong>Add friction triggers</strong></a> — Define dynamic box triggers for wheels.<br />
+<a href="tuto_G_control_vehicle_physics/"><strong>Control vehicle physics</strong></a> — Set runtime changes on a vehicle physics.<br />
+<a href="tuto_G_control_walker_skeletons/"><strong>Control walker skeletons</strong></a> — Animate walkers using skeletons.<br />
+<a href="tuto_G_openstreetmap/"><strong>Generate maps with OpenStreetMap</strong></a> — Use OpenStreetMap to generate maps for use in simulations.<br />
+<a href="tuto_G_retrieve_data/"><strong>Retrieve simulation data</strong></a> — A step by step guide to properly gather data using the recorder.<br />
+<a href="tuto_G_carsim_integration/"><strong>CarSim Integration (Beta)</strong></a> — Tutorial on how to run a simulation using the CarSim vehicle dynamics engine.<br />
+<a href="tuto_G_rllib_integration/"><strong>RLlib Integration</strong></a> — Find out how to run your own experiment using the RLlib library.<br />
+<a href="tuto_G_chrono/"><strong>Chrono Integration</strong></a> — Use the Chrono integration to simulation physics<br />
+<a href="build_docker_unreal/"><strong>Build Unreal Engine and CARLA in Docker</strong></a> — Build Unreal Engine and CARLA in Docker  </p>
+<h2 id="tutorials-assets">Tutorials — Assets</h2>
+<p><a href="tuto_A_add_vehicle/"><strong>Add a new vehicle</strong></a> — Prepare a vehicle to be used in CARLA.<br />
+<a href="tuto_A_add_props/"><strong>Add new props</strong></a> — Import additional props into CARLA.<br />
+<a href="tuto_A_create_standalone/"><strong>Create standalone packages</strong></a> — Generate and handle standalone packages for assets.<br />
+<a href="tuto_A_material_customization/"><strong>Material customization</strong></a> — Edit vehicle and building materials.  </p>
+<h2 id="tutorials-developers">Tutorials — Developers</h2>
+<p><a href="tuto_D_contribute_assets/"><strong>How to upgrade content</strong></a> — Add new content to CARLA.<br />
+<a href="tuto_D_create_sensor/"><strong>Create a sensor</strong></a> — Develop a new sensor to be used in CARLA.<br />
+<a href="tuto_D_create_semantic_tags/"><strong>Create semantic tags</strong></a> — Define customized tags for semantic segmentation.<br />
+<a href="tuto_D_customize_vehicle_suspension/"><strong>Customize vehicle suspension</strong></a> — Modify the suspension system of a vehicle.<br />
+<a href="tuto_D_generate_colliders/"><strong>Generate detailed colliders</strong></a> — Create detailed colliders for vehicles.<br />
+<a href="tuto_D_make_release/"><strong>Make a release</strong></a> — How to make a release of CARLA  </p>
+<h2 id="carla-ecosystem">CARLA Ecosystem</h2>
+<p><a href="ecosys_ansys/"><strong>Ansys Real Time Radar Model</strong></a> — Details about the Ansys RTR Webinair  </p>
+<h2 id="contributing">Contributing</h2>
+<p><a href="cont_contribution_guidelines/"><strong>Contribution guidelines</strong></a> — The different ways to contribute to CARLA.<br />
+<a href="cont_code_of_conduct/"><strong>Code of conduct</strong></a> — Standard rights and duties for contributors.<br />
+<a href="cont_coding_standard/"><strong>Coding standard</strong></a> — Guidelines to write proper code.<br />
+<a href="cont_doc_standard/"><strong>Documentation standard</strong></a> — Guidelines to write proper documentation.  </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="start_introduction/" class="btn btn-neutral float-right" title="Introduction">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
 
-<p>
-Please use the <a href="https://owncloud.physik.uni-muenchen.de/index.php/s/NqqGb1OslXEIy80">manual</a> to prepare for the lab. Further instructions can be found in this <a href="https://owncloud.physik.uni-muenchen.de/index.php/s/UvAjga3BHTFxNYl">ipython notebook</a>.
-</p>
+  <hr/>
 
-<p>
-You will use the data in halo5.tab (<a href="https://dmz-sv-owncloud.physik.uni-muenchen.de/public.php?service=files&t=fac80dcbbccd5258a0d4ae1f9921adb9">download</a>) - make sure you either save it to the current
-working directory of your notebook or specify the right path inside your notebook when opening
-the file.
-</p>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/carla-simulator/carla/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+        <span style="margin-left: 15px"><a href="start_introduction/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
 </div>
-</div>
-</div>
-<div id="postamble" class="status">
-<p class="author">Author: The Astrophysics Python Lab Instructors</p>
-<p class="date">Created: 2019-04-29 Mon 15:59</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
-</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="extra.js" defer></script>
+      <script src="readthedocs-data.js" defer></script>
+      <script src="https://assets.readthedocs.org/static/core/js/readthedocs-doc-embed.js" defer></script>
+      <script src="https://assets.readthedocs.org/static/javascript/readthedocs-analytics.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
 </body>
 </html>
+
+<!--
+MkDocs version : 1.1
+Build Date UTC : 2021-08-03 14:40:21
+-->
 
